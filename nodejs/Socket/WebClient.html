@@ -1,0 +1,44 @@
+<!--
+//socket.io 클라이언트 초기화
+//socket.io 서버 연결
+// http server에게 socket.io 초기화 html 요청
+// html 로딩 - 스크립트 로딩
+-->
+
+<html>
+    <head>
+    <meta charset = "UTF8">
+    <!--0. 스크립트 로딩; 서버에 json 파일 형식 요청-->
+    <script src = /socket.io/socket.io.js"></script>
+    <!--클라이언트 소켓 클래스 초기화- IO(url:String, opts: Object):Socket-->
+    <!--2. socket.io 소켓 생성 앤 서버 접속-->
+    <script>
+    var socket = io();
+    //connection event 발생시키기
+    socket.on('connection',function(){
+    console.log('서버랑 연결댐 ><');
+    });
+
+    /*
+    서버에 메시지 보내기 - object 형식
+    socket.emit('howAreYou',{message: 'Im fine'}) ;
+  */
+   </script>
+</head>
+
+<body>
+    <h1>Socket.IO Sample</h1>
+    <ul>
+        <script>
+            socket.on('message',function(msg){
+                //message 이벤트로 온 data를 핸들러인 msg 에 담아,,
+                document.write('<li>');
+                    document.write(msg);
+                document.wirteln('</li>');
+            });
+
+        </script>
+    </ul>
+</body>
+
+</html>
