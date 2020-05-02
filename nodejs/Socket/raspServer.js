@@ -46,6 +46,12 @@ io.on('connection',function(socket){
         console.log('카메라(장소): ' + data['cameraid']);
         console.log('사람 수: '+data['people']);
     })
+
+    //clnt에 텍스트 수신
+    socket.on('textfile',function(data){
+        console.log('텍스트 파일 수신 > ');
+        console.log(data);
+    })
     
     socket.on('disconnect',function(){
         console.log('클라이언트 접속 끊김 ㅠㅠ');
