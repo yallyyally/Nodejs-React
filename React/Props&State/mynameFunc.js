@@ -42,11 +42,12 @@ console.log(b); // 7
 이렇게 하면 a=1, b=3 저장 됨
 
 함수에 이용>
-function sayHello({name:'뫄뫄',age:24}){
+function sayHello({name,age}){
   console.log(name+'의 나이는'+age);
   //전달해준 객체의 name 값과 age 값을 하나하나 추출해서 넣어준 것
-
 }
+sayHello({name: '뫄뫄', age: 24})
+>> 뫄뫄의 나이는24
 */
   return <div>안녕하세요! 제 이름은 <b>{name}</b> 입니다.</div>;
   //혹은 return (<div>웅앵웅</div> );
