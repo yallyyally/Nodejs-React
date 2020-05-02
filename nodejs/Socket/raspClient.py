@@ -1,6 +1,7 @@
 import socketio
 import sys
 from os.path import exists
+import threading
 
 sio = socketio.Client()
 
@@ -13,9 +14,10 @@ def connect():
     #asap connect success
     sio.emit('raspMessage', {'cameraid': '쪽문', 'people': '3'})
     print('서버에 메시지 전송\n')
+    set_interval(sendfile,3)
     
+def sendfile():
     print('파일 %s 전송 시작 ...'%filename)
-
     with open(filepath,'r') as f:
         try:
             data = f.read(1024)
@@ -35,6 +37,14 @@ def connect():
 @sio.event
 def disconnect():
     print('disconnected from server')
+
+def set_interval(func,sec):
+    def func_wrapper():
+        set_interval(func,sec)
+        func()
+    t = threading.Timer(sec,func_wrapper)
+    t.start()
+    return t
 
 sio.connect('http://localhost:3000')
 sio.wait()
