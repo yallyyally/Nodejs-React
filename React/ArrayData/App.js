@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //import './App.css';
 import PhoneForm from './components/PhoneForm';
+import PhoneInfoList from './components/PhoneInfoList';
 /*
 자식컴포넌트의 state 전달 받을 때.
 handleCreate 메소드 만들고
@@ -34,7 +35,7 @@ class App extends Component {
       //information: information.concat({...data, id: this.id++})
       //information: information.concat({name:data.name, phone:data.phone,id:this.id++ })
       // information: information.concat(data)
-   //   information: this.state.information.concat(data),
+      //information: this.state.information.concat(data),
       //concat: 기존 배열에 더 추가해서 새로운 배열을 만든다.
       //배열을 전달 받을 경우 한번 더 분해해서 추가한다.
       //push(data)말고 concat(data) ->기존 배열 수정하지 않고  새로운 배열 만들어서 주입시킨거
@@ -46,9 +47,12 @@ class App extends Component {
       <div>
         <PhoneForm onCreate = {this.handleCreate}></PhoneForm>
         {/* App.js에서 만든 함수 자식에게 props 로 넘겨주는 주 */}
-        {JSON.stringify(this.state.information)}
+        {/*JSON.stringify(this.state.information)*/}
         {/* App.js에서 만든 함수 자식에게 props 로 넘겨주는 주 */}
         {/*information 배열 나옴.JSON을 string화 한것*/}
+        <PhoneInfoList data = {this.state.information}/>
+          {/*  const { data } = this.props; */}
+
       </div>
     );
   }
